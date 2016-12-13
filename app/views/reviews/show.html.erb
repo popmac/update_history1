@@ -1,14 +1,28 @@
 <h1><%= @review.user.username %>さんのレビュー</h1>
 
 <div>
-  <h2>name</h2>
+  <h2>Name</h2>
   <%= @review.name %>
 </div>
 
 <div>
-  <h2>content</h2>
+  <h2>Content</h2>
   <%= @review.content %>
 </div>
+
+<h2>Comment一覧</h2>
+
+<%= link_to 'コメントする', new_review_comment_path(@review) %>
+
+<% @review.comments.each do |comment| %>
+  <div>
+    <%= comment.user.username %>
+    <%= comment.content %>
+    <% if comment.user.id == current_user.id %>
+      <%= link_to 'コメントを削除', "/reviews/#{@review.id}/comments/#{comment.id}", method: :delete %>
+    <% end %>
+  </div>
+<% end %>
 
 <div>
   <%= link_to 'トップページへ戻る', root_path %>
