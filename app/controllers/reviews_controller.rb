@@ -9,6 +9,10 @@ class ReviewsController < ApplicationController
     redirect_to :root
   end
 
+  def show
+    @review = Review.find(params[:id])
+  end
+
 
   private
   def review_params

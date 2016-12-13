@@ -1,0 +1,15 @@
+<h1><%= @review.user.username %>さんのレビュー</h1>
+
+<div>
+  <h2>name</h2>
+  <%= @review.name %>
+</div>
+
+<div>
+  <h2>content</h2>
+  <%= @review.content %>
+</div>
+
+<div>
+  <%= link_to 'トップページへ戻る', root_path %>
+</div>
