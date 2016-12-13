@@ -11,6 +11,18 @@ class CommentsController < ApplicationController
     redirect_to "/reviews/#{@review.id}"
   end
 
+  def edit
+    @review = Review.find(params[:review_id])
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:review_id])
+    comment = Comment.find(params[:id])
+    comment.update(comment_params)
+    redirect_to "/reviews/#{@review.id}"
+  end
+
   def destroy
     @review = Review.find(params[:review_id])
     comment = Comment.find(params[:id])
