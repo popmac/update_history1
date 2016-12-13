@@ -1,0 +1,15 @@
+<h1>Reviewを作成する</h1>
+
+<%= form_for(@review) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name ,autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.submit '送信する' %>
+  </div>
+<% end %>
