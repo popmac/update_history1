@@ -4,7 +4,7 @@ class HomesController < ApplicationController
   # GET /homes
   # GET /homes.json
   def index
-    @reviews = Review.all
+    @reviews = Review.all.includes(:user)
   end
 
   # GET /homes/1
