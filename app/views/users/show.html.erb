@@ -8,6 +8,16 @@
 
 <%= render partial: "user_relationships/follow_form", locals: { user: @user } %>
 
+<h2>フォローされている人数</h2>
+<div id="followers">
+  <%= @user.followers.count %>
+</div>
+
+<h2>フォローしている人数</h2>
+<div>
+  <%= @user.following.count %>
+</div>
+
 <% @reviews.each do |review| %>
   <%= review.name %><br>
   <%= review.content %><br>
