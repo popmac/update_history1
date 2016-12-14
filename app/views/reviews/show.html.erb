@@ -17,6 +17,7 @@
 <h2>Like</h2>
 
 <div id="like-button">
+<div id="reviews-show-like-button">
   <%= render partial: "likes/like", locals: { like: @review.likes.find_by(user_id: current_user.id), review: @review } %>
 </div>
 
