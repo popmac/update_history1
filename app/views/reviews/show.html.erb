@@ -1,4 +1,8 @@
-<h1><%= @review.user.username %>さんのレビュー</h1>
+<h1>Review-<%= @review.id %></h1>
+
+<div>
+  <h2><%= @review.user.username %>さん</h2>
+</div>
 
 <div>
   <h2>Name</h2>
@@ -12,7 +16,7 @@
 
 <h2>Like</h2>
 
-<div id="like-button">
+<div id="reviews-show-like-button">
   <%= render partial: "likes/like", locals: { like: @review.likes.find_by(user_id: current_user.id), review: @review } %>
 </div>
 

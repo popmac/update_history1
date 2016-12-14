@@ -1,0 +1,8 @@
+<% @reviews.each do |review| %>
+  <%= review.name %><br>
+  <%= review.content %><br>
+  <%= link_to 'レビューの詳細', review_path(review) %><br>
+  <div id="users-show-like-button-<%= review.id %>">
+    <%= render partial: "likes/like", locals: { like: review.likes.find_by(user_id: current_user.id), review: review } %>
+  </div>
+<% end %>
