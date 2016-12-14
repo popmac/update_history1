@@ -1,0 +1,11 @@
+<!-- 閲覧しているページが自分のページ以外なら表示する -->
+<% unless user.id == current_user.id %>
+  <div id="follow_form">
+  <!-- userをフォローしている場合はtrueを返す, つまり"unfollow"ボタンを表示する -->
+  <% if current_user.following?(user) %>
+    <%= render "user_relationships/unfollow" %>
+  <% else %>
+    <%= render "user_relationships/follow" %>
+  <% end %>
+  </div>
+<% end %>

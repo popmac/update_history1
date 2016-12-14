@@ -1,3 +1,26 @@
+<h1><%= @user.username %>さん</h1>
+
+<% unless @user.id == current_user.id %>
+  <% if @user.following?(current_user) %>
+    <p>あなたはフォローされています</p>
+  <% else %>
+    <p>あなたはフォローされていません</p>
+  <% end %>
+<% end %>
+
+<%= render partial: "user_relationships/follow_form", locals: { user: @user } %>
+
+<h2>フォローされている人数</h2>
+<div id="followers">
+  <%= @user.followers.count %>
+</div>
+
+<h2>フォローしている人数</h2>
+<div>
+  <%= @user.following.count %>
+</div>
+
+<h2>Review一覧</h2>
 <% @reviews.each do |review| %>
   <%= review.name %><br>
   <%= review.content %><br>
