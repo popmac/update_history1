@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :homes, only: [:index]
   resources :reviews do
     resources :comments
+    resources :likes, only: [:create, :destroy]
   end
   root 'homes#index'
 end
