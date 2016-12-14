@@ -1,3 +1,6 @@
+
+<%= render partial: "user_relationships/follow_form", locals: { user: @user } %>
+
 <% @reviews.each do |review| %>
   <%= review.name %><br>
   <%= review.content %><br>
