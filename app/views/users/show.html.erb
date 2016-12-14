@@ -1,3 +1,10 @@
+<% unless @user.id == current_user.id %>
+  <% if @user.following?(current_user) %>
+    <p>あなたはフォローされています</p>
+  <% else %>
+    <p>あなたはフォローされていません</p>
+  <% end %>
+<% end %>
 
 <%= render partial: "user_relationships/follow_form", locals: { user: @user } %>
 
