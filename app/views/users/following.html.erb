@@ -1,0 +1,7 @@
+<% if @users.count == 0 %>
+  <p>フォローしているuserはいません</p>
+<% end %>
+
+<% @users.each do |user| %>
+  <%= user.username %><br>
+<% end %>
