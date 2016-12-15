@@ -9,4 +9,7 @@ class Review < ActiveRecord::Base
     likes.find_by(user_id: user_id)
   end
 
+  def check_unread_review(user_id, review_id)
+    self.checked_reviews.where(checking_user_id: user_id, review_id: review_id)
+  end
 end
