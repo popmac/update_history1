@@ -7,7 +7,11 @@ class CommentsController < ApplicationController
 
   def create
     @review = Review.find(params[:review_id])
-    Comment.create(comment_params)
+    comment = Comment.create(comment_params)
+    users = User.all
+    users.each do |user|
+      CheckedComment.create(review_id: @review.id, comment_id: comment.id, checking_user_id: user.id)
+    end
     redirect_to "/reviews/#{@review.id}"
   end
 

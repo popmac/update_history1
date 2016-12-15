@@ -24,7 +24,16 @@
     </div>
   <% end %>
 
-  <h2>更新履歴</h2>
+  <div class="update-history-title">
+    <h2>更新履歴</h2>
+    <% if @uncheck_histories.count == 0 %>
+    <!-- 何も表示しない -->
+    <% else %>
+      <div class="uncheck-number">
+        <%= @uncheck_histories.count %>
+      </div>
+    <% end %>
+  </div>
 
   <% @histories.each do |h| %>
     <% if h.item_type == "Review" %>

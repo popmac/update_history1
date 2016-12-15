@@ -2,6 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.update-history-title {
+  position: relative;
+}
+
+.uncheck-number {
+  position: absolute;
+  top: 4px;
+  left: 125px;
+  width: 25px;
+  height: 25px;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.8;
+  background-color: #ff0000;
+  border-radius: 50%;
+}
+
 .already-read {
   color: #ff0000;
 }
