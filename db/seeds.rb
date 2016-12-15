@@ -38,3 +38,14 @@ Like.create!(user_id: 3,
              review_id: 1)
 Like.create!(user_id: 1,
              review_id: 2)
+
+UserRelationship.create!(follower_id: 1,
+                         followed_id: 2)
+UserRelationship.create!(follower_id: 1,
+                         followed_id: 3)
+UserRelationship.create!(follower_id: 1,
+                         followed_id: 4)
+UserRelationship.create!(follower_id: 2,
+                         followed_id: 1)
+UserRelationship.create!(follower_id: 3,
+                         followed_id: 1)
