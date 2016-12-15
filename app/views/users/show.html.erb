@@ -12,12 +12,16 @@
 
 <h2>フォローされている人数</h2>
 <div id="followers">
-  <%= @user.followers.count %>
+  <%= link_to followers_user_path(@user) do %>
+    <%= @user.followers.count %>
+  <% end %>
 </div>
 
 <h2>フォローしている人数</h2>
 <div>
-  <%= @user.following.count %>
+  <%= link_to following_user_path(@user) do %>
+    <%= @user.following.count %>
+  <% end %>
 </div>
 
 <h2>Review一覧</h2>
