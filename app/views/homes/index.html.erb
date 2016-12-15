@@ -50,6 +50,13 @@
         <div>
           <%= h.created_at %>:<%= h.item.user.username %>が<%= h.item_type %>を<%= h.event %>しました
           <%= link_to '詳細', review_path(h.item.review_id) %>
+          <% if h.item.check_unread_comment(current_user.id, h.item.review_id, h.item.id).empty? %>
+          <!-- 何も表示しない -->
+          <% else %>
+            <% if h.item.check_unread_comment(current_user.id, h.item.review_id, h.item.id)[0].checked_flag == true %>
+              <span class="already-read">既読</span>
+            <% end %>
+          <% end %>
         </div>
       <% end %>
     <% elsif h.item_type == "Like" %>
