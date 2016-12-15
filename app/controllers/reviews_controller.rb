@@ -37,6 +37,19 @@ class ReviewsController < ApplicationController
       @checked_comment.save
     end
     # ▲commentの既読
+    # ▼likeの既読
+    @likes = @review.likes
+    @likes.each do |like|
+      @checked_like = CheckedLike.where(checking_user_id: current_user.id, review_id: @review.id, like_id: like.id).first_or_initialize
+      @checked_like.review_id = @review.id
+      @checked_like.checking_user_id = current_user.id
+      @checked_like.like_id = like.id
+      if @checked_like.checked_flag == false
+        @checked_like.checked_flag = 1
+      end
+      @checked_like.save
+    end
+    # ▲likeの既読
   end
 
   def edit
