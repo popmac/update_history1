@@ -5,7 +5,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    Review.create(review_params)
+    review =  Review.create(review_params)
+    users = User.all
+    users.each do |user|
+      CheckedReview.create(review_id: review.id, checking_user_id: user.id)
+    end
     redirect_to :root
   end
 
