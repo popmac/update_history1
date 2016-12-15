@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :homes, only: [:index]
   resources :reviews do
     resources :comments
