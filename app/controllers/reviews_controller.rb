@@ -11,6 +11,15 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    # ▼reviewの既読
+    @checked_review = CheckedReview.where(checking_user_id: current_user.id, review_id: @review.id).first_or_initialize
+    @checked_review.review_id = @review.id
+    @checked_review.checking_user_id = current_user.id
+    if @checked_review.checked_flag == false
+      @checked_review.checked_flag = 1
+    end
+    @checked_review.save
+    # ▲reviewの既読
   end
 
   def edit
