@@ -48,6 +48,7 @@ group :development do
 end
 
 gem 'pry-rails'
+gem 'pry-byebug'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'bootstrap-sass'
