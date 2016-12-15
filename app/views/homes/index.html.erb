@@ -45,6 +45,23 @@
           <%= link_to '詳細', review_path(h.item.review_id) %>
         </div>
       <% end %>
+    <% elsif h.item_type == "Like" %>
+      <% if h.item == nil %>
+      <!-- 何もしない -->
+      <% else %>
+        <div>
+          <%= h.created_at %>:<%= h.item.user.username %>が<%= h.item_type %>を<%= h.event %>しました
+          <%= link_to '詳細', review_path(h.item.review_id) %>
+        </div>
+      <% end %>
+    <% else h.item_type == "UserRelationship" %>
+      <% if h.item == nil %>
+      <!-- 何もしない -->
+      <% else %>
+        <div>
+          <%= h.created_at %>:<%= h.item.follower.username %>が<%= h.item.followed.username %>をフォローしました
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 
