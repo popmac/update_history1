@@ -3,4 +3,5 @@ class Like < ActiveRecord::Base
   belongs_to :user
   validates :user_id, :uniqueness => {:scope => :review_id}
   has_paper_trail
+  has_many :checked_likes
 end

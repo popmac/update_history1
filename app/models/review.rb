@@ -5,6 +5,7 @@ class Review < ActiveRecord::Base
   has_paper_trail
   has_many :checked_reviews
   has_many :checked_comments
+  has_many :checked_likes
 
   def like_user(user_id)
     likes.find_by(user_id: user_id)
