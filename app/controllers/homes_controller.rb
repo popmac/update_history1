@@ -7,6 +7,34 @@ class HomesController < ApplicationController
     @users = User.all
     @reviews = Review.all.includes(:user)
     @histories = PaperTrail::Version.order('created_at DESC').includes(:item)
+    if user_signed_in?
+      # 未読の数
+      @uncheck_histories = []
+      @histories.each do |h|
+        if h.item == nil
+          next
+        elsif h.event == "update"
+          next
+        else
+          if h.item_type == "Review"
+            if h.item.checked_reviews.where(checking_user_id: current_user.id, review_id: h.item.id)[0] == nil
+              next
+            end
+            if h.item.checked_reviews.where(checking_user_id: current_user.id, review_id: h.item.id)[0].checked_flag == false
+              @uncheck_histories << h
+            end
+          end
+          if h.item_type == "Comment"
+            if h.item.checked_comments.where(checking_user_id: current_user.id, review_id: h.item.review_id, comment_id: h.item.id)[0] == nil
+              next
+            end
+            if h.item.checked_comments.where(checking_user_id: current_user.id, review_id: h.item.review_id, comment_id: h.item.id)[0].checked_flag == false
+              @uncheck_histories << h
+            end
+          end
+        end
+      end
+    end
   end
 
   # GET /homes/1
