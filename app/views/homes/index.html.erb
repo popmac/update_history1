@@ -62,7 +62,7 @@
           <% if h.item.check_unread_comment(current_user.id, h.item.review_id, h.item.id).empty? %>
           <!-- 何も表示しない -->
           <% else %>
-            <% if h.item.check_unread_comment(current_user.id, h.item.review_id, h.item.id)[0].checked_flag == true %>
+            <% if (h.item.check_unread_comment(current_user.id, h.item.review_id, h.item.id)[0].checked_flag == true) %>
               <span class="already-read">既読</span>
             <% end %>
           <% end %>
