@@ -24,6 +24,30 @@
     </div>
   <% end %>
 
+  <h2>更新履歴</h2>
+
+  <% @histories.each do |h| %>
+    <% if h.item_type == "Review" %>
+      <% if h.item == nil %>
+      <!-- 何もしない -->
+      <% else %>
+        <div>
+          <%= h.created_at %>:<%= h.item.user.username %>が<%= h.item_type %>を<%= h.event %>しました
+          <%= link_to '詳細', review_path(h.item.id) %>
+        </div>
+      <% end %>
+    <% elsif h.item_type == "Comment" %>
+      <% if h.item == nil %>
+      <!-- 何もしない -->
+      <% else %>
+        <div>
+          <%= h.created_at %>:<%= h.item.user.username %>が<%= h.item_type %>を<%= h.event %>しました
+          <%= link_to '詳細', review_path(h.item.review_id) %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
 <% else %>
 
   <p><%= link_to 'ログイン', new_user_session_path %>もしくは<%= link_to '会員登録', new_user_registration_path %>をしてください</p>
