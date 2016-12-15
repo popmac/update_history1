@@ -3,4 +3,5 @@ class UserRelationship < ActiveRecord::Base
   belongs_to :followed, class_name: "User"
   validates :follower_id, presence: true
   validates :followed_id, presence: true
+  has_paper_trail
 end
