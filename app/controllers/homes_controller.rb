@@ -6,6 +6,7 @@ class HomesController < ApplicationController
   def index
     @users = User.all
     @reviews = Review.all.includes(:user)
+    @histories = PaperTrail::Version.order('created_at DESC').includes(:item)
   end
 
   # GET /homes/1
