@@ -32,6 +32,14 @@ class HomesController < ApplicationController
               @uncheck_histories << h
             end
           end
+          if h.item_type == "Like"
+            if h.item.checked_likes.where(checking_user_id: current_user.id, review_id: h.item.review_id, like_id: h.item.id)[0] == nil
+              next
+            end
+            if h.item.checked_likes.where(checking_user_id: current_user.id, review_id: h.item.review_id, like_id: h.item.id)[0].checked_flag == false
+              @uncheck_histories << h
+            end
+          end
         end
       end
     end
