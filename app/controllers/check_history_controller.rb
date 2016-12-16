@@ -1,6 +1,6 @@
 class CheckHistoryController < ApplicationController
   def index
-    @histories = PaperTrail::Version.order('created_at DESC')
+    @histories = PaperTrail::Version.order('created_at DESC').where.not(whodunnit: current_user)
     # reviewについて
     @checked_review = CheckedReview.where(checking_user_id: current_user.id)
     @checked_review.each do |checked_review|
