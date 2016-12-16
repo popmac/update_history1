@@ -6,7 +6,7 @@ class HomesController < ApplicationController
   def index
     @users = User.all
     @reviews = Review.all.includes(:user)
-    @histories = PaperTrail::Version.order('created_at DESC').includes(:item)
+    @histories = PaperTrail::Version.order('created_at DESC').where.not(whodunnit: current_user).includes(:item)
     if user_signed_in?
       # 未読の数
       @uncheck_histories = []
