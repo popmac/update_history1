@@ -44,3 +44,17 @@
   <p><%= link_to 'ログイン', new_user_session_path %>もしくは<%= link_to '会員登録', new_user_registration_path %>をしてください</p>
 
 <% end %>
+
+<script>
+$(function() {
+  var ajaxCheckHistory = function() {
+    $.ajax({
+      url: "/check_history",
+      type: "GET",
+    });
+  };
+  $('#dropdown-update-history').click(function() {
+    ajaxCheckHistory();
+  });
+});
+</script>
