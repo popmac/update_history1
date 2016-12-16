@@ -24,18 +24,18 @@
     </div>
   <% end %>
 
-  <div class="update-history-title">
+  <div class="update-history-heading">
     <h2>更新履歴</h2>
     <% if @uncheck_histories.count == 0 %>
     <!-- 何も表示しない -->
     <% else %>
-      <div id="uncheck-number">
+      <div id="uncheck-number-homes-index">
         <%= @uncheck_histories.count %>
       </div>
     <% end %>
   </div>
 
-  <div id="update-history-main">
+  <div id="update-history-homes-index">
     <%= render partial: "homes/update_history", locals: { histories: @histories } %>
   </div>
 
