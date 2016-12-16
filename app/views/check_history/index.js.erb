@@ -1,6 +1,6 @@
 // navbarの更新履歴について
-$('#update-history').html('<%= j(render partial: 'homes/update_history', locals: { histories: @histories }) %>');
-$('#update-history-number').hide();
+$('#update-history-navbar').html('<%= j(render partial: 'homes/update_history', locals: { histories: @histories }) %>');
+$('#uncheck-number-navbar').hide();
 // homes/indexの更新履歴について
-$('#update-history-main').html('<%= j(render partial: 'homes/update_history', locals: { histories: @histories }) %>');
-$('#uncheck-number').hide();
+$('#update-history-homes-index').html('<%= j(render partial: 'homes/update_history', locals: { histories: @histories }) %>');
+$('#uncheck-number-homes-index').hide();
