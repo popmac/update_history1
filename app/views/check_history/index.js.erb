@@ -1,0 +1,6 @@
+// navbarの更新履歴について
+$('#update-history').html('<%= j(render partial: 'homes/update_history', locals: { histories: @histories }) %>');
+$('#update-history-number').hide();
+// homes/indexの更新履歴について
+$('#update-history-main').html('<%= j(render partial: 'homes/update_history', locals: { histories: @histories }) %>');
+$('#uncheck-number').hide();
