@@ -41,7 +41,9 @@
 
 <% else %>
 
-  <p><%= link_to 'ログイン', new_user_session_path %>もしくは<%= link_to '会員登録', new_user_registration_path %>をしてください</p>
+  <div class="application-promotion">
+    <p><%= link_to 'ログイン', new_user_session_path %>もしくは<%= link_to '会員登録', new_user_registration_path %>をしてください</p>
+  </div>
 
 <% end %>
 
