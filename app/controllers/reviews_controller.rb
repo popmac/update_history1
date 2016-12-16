@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     @checked_review.save
     # ▲reviewの既読
     # ▼commentの既読
-    @comments = @review.comments
+    @comments = @review.comments.includes(:user)
     @comments.each do |comment|
       @checked_comment = CheckedComment.where(checking_user_id: current_user.id, review_id: @review.id, comment_id: comment.id).first_or_initialize
       @checked_comment.review_id = @review.id
