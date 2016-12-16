@@ -40,7 +40,7 @@
     <!-- 何もしない -->
     <% else %>
       <div>
-        <%= h.created_at %>:<%= h.item.user.username %>が<%= h.item_type %>を<%= h.event %>しました
+        <%= h.created_at %>:<%= h.item.user.username %>が<%= h.item.review.user.username %>の<%= h.item.review.name %>に<%= h.item_type %>を<%= h.event %>しました
         <%= link_to '詳細', review_path(h.item.review_id) %>
         <% if h.item.checked_unread_like(current_user.id, h.item.review_id, h.item.id).empty? %>
         <!-- 何も表示しない -->
