@@ -29,16 +29,32 @@
     <% if @uncheck_histories.count == 0 %>
     <!-- 何も表示しない -->
     <% else %>
-      <div class="uncheck-number">
+      <div id="uncheck-number">
         <%= @uncheck_histories.count %>
       </div>
     <% end %>
   </div>
 
-  <%= render partial: "homes/update_history", locals: { histories: @histories } %>
+  <div id="update-history-main">
+    <%= render partial: "homes/update_history", locals: { histories: @histories } %>
+  </div>
 
 <% else %>
 
   <p><%= link_to 'ログイン', new_user_session_path %>もしくは<%= link_to '会員登録', new_user_registration_path %>をしてください</p>
 
 <% end %>
+
+<script>
+$(function() {
+  var ajaxCheckHistory = function() {
+    $.ajax({
+      url: "/check_history",
+      type: "GET",
+    });
+  };
+  $('#dropdown-update-history').click(function() {
+    ajaxCheckHistory();
+  });
+});
+</script>
