@@ -24,10 +24,31 @@
     <div class="collapse navbar-collapse" id="navbarEexample">
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
-          <li><%= link_to "#{current_user.username}さん", user_path(current_user) %></li>
-          <li><%= link_to '会員情報を編集', edit_user_registration_path %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "#{current_user.username}さん", user_path(current_user) %></li>
+        <li><%= link_to '会員情報を編集', edit_user_registration_path %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>
+        <% end %>
+        <% if user_signed_in? %>
+          <% if controller_name == "homes" && action_name == "index" %>
+            <li class="dropdown">
+              <% if @uncheck_histories.count == 0 %>
+              <!-- 何も表示しない -->
+              <% else %>
+              <div id="update-history-number">
+                <%= @uncheck_histories.count %>
+              </div>
+              <% end %>
+              <a href="/check_history" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更新履歴<span class="caret"></span></a>
+              <ul class="dropdown-menu" id="update-history-menu">
+                <li>
+                  <div id="update-history">
+                    <%= render partial: "homes/update_history", locals: { histories: @histories } %>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </div>
