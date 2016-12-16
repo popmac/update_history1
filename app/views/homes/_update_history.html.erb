@@ -11,6 +11,8 @@
         <% else %>
           <% if (h.item.check_unread_review(current_user.id, h.item.id)[0].checked_flag == true) %>
             <span class="already-read">既読</span>
+          <% else %>
+            <span class="unread">未読</span>
           <% end %>
         <% end %>
       </div>
@@ -27,6 +29,8 @@
         <% else %>
           <% if (h.item.check_unread_comment(current_user.id, h.item.review_id, h.item.id)[0].checked_flag == true) %>
             <span class="already-read">既読</span>
+          <% else %>
+            <span class="unread">未読</span>
           <% end %>
         <% end %>
       </div>
@@ -43,6 +47,8 @@
         <% else %>
           <% if (h.item.checked_unread_like(current_user.id, h.item.review_id, h.item.id)[0].checked_flag == true) %>
             <span class="already-read">既読</span>
+          <% else %>
+            <span class="unread">未読</span>
           <% end %>
         <% end %>
       </div>
