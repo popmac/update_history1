@@ -29,13 +29,15 @@
     <% if @uncheck_histories.count == 0 %>
     <!-- 何も表示しない -->
     <% else %>
-      <div class="uncheck-number">
+      <div id="uncheck-number">
         <%= @uncheck_histories.count %>
       </div>
     <% end %>
   </div>
 
-  <%= render partial: "homes/update_history", locals: { histories: @histories } %>
+  <div id="update-history-main">
+    <%= render partial: "homes/update_history", locals: { histories: @histories } %>
+  </div>
 
 <% else %>
 
